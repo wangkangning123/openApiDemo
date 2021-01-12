@@ -1,0 +1,7 @@
+entity People {
+    id       Long,
+    username String,
+    password String,
+    email    String,
+    phone    String
+}

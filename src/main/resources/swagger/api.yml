@@ -1,0 +1,145 @@
+#string  定义openapi的规范版本号  必须参数
+openapi: 3.0.1
+#信息对象  提供有关api的元数据  必须参数
+info:
+  #string  应用程序的名称  必须参数
+  title: my demo
+  #string  应用程序简单描述
+  description: openapi 生成实例
+  #string  api服务条款网址
+  termsOfService: http://example.com/terms/
+  #Object  公开api来呢西信息
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+  #Object  公开api许可信息
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+#服务器对象数组  用于提供目标服务器的连接信息  如果不提供，默认将是一个有url的服务器对象
+servers:
+  - url: https://myDemo/api/v1
+    description: Development server
+    variables:
+      username:
+        default: wkn
+        description: default user
+      port:
+        enum:
+          - '8080'
+          - '8088'
+        default: '8080'
+      basePath:
+        default: v2
+#-- /{path}   path项对象  到单个短线的相对路径，字段名称必须以/开头，路径会自动追加到url后面，用以构造完成的url
+paths:
+  /people:
+    get:
+      description: 获取用户信息
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          schema:
+            type: long
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          schema:
+            type: long
+        - name: sort
+          in: query
+          description: Sorting criteria in the format： property(,asc|desc).Default sort order is ascending. Multple sort criteria are supported.
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: 返回用户信息
+          content:
+            application/json:
+              schema:
+                type: object
+    post:
+      description: 新增用户信息
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the requested page
+          required: false
+          schema:
+            type: long
+        - name: size
+          in: query
+          description: Size of a page
+          required: false
+          schema:
+            type: long
+        - name: sort
+          in: query
+          description: Sorting criteria in the format： property(,asc|desc).Default sort order is ascending. Multple sort criteria are supported.
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      requestBody:
+        description: 新增用户传输对象
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/ypeople'
+      responses:
+        '200':
+          description: 返回新增结果
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ypeople'
+  /test:
+    post:
+      description: 文件传输测试
+      requestBody:
+        description: 文件
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: 返回新增结果
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ypeople'
+components:
+  #可重用的架构对象
+  schemas:
+    ypeople:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        passowrd:
+          type: string
+        email:
+          type: string
+        phone:
+          type: String

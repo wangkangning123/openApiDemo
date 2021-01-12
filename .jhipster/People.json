@@ -1,0 +1,33 @@
+{
+  "name": "People",
+  "fields": [
+    {
+      "fieldName": "username",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210111095109",
+  "entityTableName": "people",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

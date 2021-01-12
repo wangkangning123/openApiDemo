@@ -1,0 +1,25 @@
+{
+  "openApiDemoApp": {
+    "people": {
+      "home": {
+        "title": "People",
+        "createLabel": "创建新 People",
+        "createOrEditLabel": "创建或编辑 People",
+        "notFound": "No People found"
+      },
+      "created": "People {{ param }} 创建成功",
+      "updated": "People {{ param }} 更新成功",
+      "deleted": "People {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 People {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "People"
+      },
+      "username": "Username",
+      "password": "Password",
+      "email": "Email",
+      "phone": "Phone"
+    }
+  }
+}

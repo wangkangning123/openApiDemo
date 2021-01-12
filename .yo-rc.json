@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.openapi.demo",
+      "nativeLanguage": "zh-cn"
+    },
+    "jhipsterVersion": "6.10.5",
+    "applicationType": "monolith",
+    "baseName": "openApiDemo",
+    "packageName": "com.openapi.demo",
+    "packageFolder": "com/openapi/demo",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "MjhiNGI1YTU2MDk4ZTAxZmM1MzNmNmU3NjBiZjM0NmNkYTRmMGIzNTI0Mzk2NDMxNGFlZjdjYzZmNzMzYTNjZGI5ZGEwOTc2YWZhY2VhZThlOGYwZmEzMzhiNTYxZjdlOWUxYzg3MTQ5MDI3YjVjZDkzMTU0OTVjYzA5N2Q5ZjQ=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1610357954518,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "zh-cn",
+    "languages": ["zh-cn"],
+    "blueprints": []
+  }
+}

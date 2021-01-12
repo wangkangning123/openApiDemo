@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="people">
+            <h2><span jhiTranslate="openApiDemoApp.people.detail.title">People</span> {{ people.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="openApiDemoApp.people.username">Username</span></dt>
+                <dd>
+                    <span>{{ people.username }}</span>
+                </dd>
+                <dt><span jhiTranslate="openApiDemoApp.people.password">Password</span></dt>
+                <dd>
+                    <span>{{ people.password }}</span>
+                </dd>
+                <dt><span jhiTranslate="openApiDemoApp.people.email">Email</span></dt>
+                <dd>
+                    <span>{{ people.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="openApiDemoApp.people.phone">Phone</span></dt>
+                <dd>
+                    <span>{{ people.phone }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/people', people.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

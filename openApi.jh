@@ -3,5 +3,8 @@ entity People {
     username String,
     password String,
     email    String,
-    phone    String
+    phone    String,
+    date     LocalDate,
+    sex      String,
+    hobby    TextBlob
 }

@@ -19,7 +19,10 @@
       "username": "Username",
       "password": "Password",
       "email": "Email",
-      "phone": "Phone"
+      "phone": "Phone",
+      "date": "Date",
+      "sex": "Sex",
+      "hobby": "Hobby"
     }
   }
 }

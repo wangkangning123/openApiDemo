@@ -28,6 +28,15 @@
             <column name="phone" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="sex" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hobby" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
@@ -55,6 +64,9 @@
             <column name="password" type="string"/>
             <column name="email" type="string"/>
             <column name="phone" type="string"/>
+            <column name="date" type="date"/>
+            <column name="sex" type="string"/>
+            <column name="hobby" type="clob"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

@@ -6,6 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * A People.
@@ -32,6 +33,16 @@ public class People implements Serializable {
 
     @Column(name = "phone")
     private String phone;
+
+    @Column(name = "date")
+    private LocalDate date;
+
+    @Column(name = "sex")
+    private String sex;
+
+    @Lob
+    @Column(name = "hobby")
+    private String hobby;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -93,6 +104,45 @@ public class People implements Serializable {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public People date(LocalDate date) {
+        this.date = date;
+        return this;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public People sex(String sex) {
+        this.sex = sex;
+        return this;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public People hobby(String hobby) {
+        this.hobby = hobby;
+        return this;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -120,6 +170,9 @@ public class People implements Serializable {
             ", password='" + getPassword() + "'" +
             ", email='" + getEmail() + "'" +
             ", phone='" + getPhone() + "'" +
+            ", date='" + getDate() + "'" +
+            ", sex='" + getSex() + "'" +
+            ", hobby='" + getHobby() + "'" +
             "}";
     }
 }

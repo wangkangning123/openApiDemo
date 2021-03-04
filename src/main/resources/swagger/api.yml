@@ -8,7 +8,6 @@ info:
   description: openapi 生成实例
   #string  api服务条款网址
   termsOfService: http://example.com/terms/
-  #Object  公开api来呢西信息
   contact:
     name: API Support
     url: http://www.example.com/support
@@ -20,7 +19,7 @@ info:
   version: 1.0.0
 #服务器对象数组  用于提供目标服务器的连接信息  如果不提供，默认将是一个有url的服务器对象
 servers:
-  - url: https://myDemo/api/v1
+  - url: https://myDemo/api
     description: Development server
     variables:
       username:
@@ -37,77 +36,49 @@ servers:
 paths:
   /people:
     get:
-      description: 获取用户信息
+      description: 获取用户信息(分页)
+      summary: 获取用户信息(分页)
+      tags:
+        - people
+      operationId: getPeople
       parameters:
-        - name: page
+        - name: pageable
+          description: page
           in: query
-          description: Page number of the requested page
           required: false
           schema:
-            type: long
-        - name: size
-          in: query
-          description: Size of a page
-          required: false
-          schema:
-            type: long
-        - name: sort
-          in: query
-          description: Sorting criteria in the format： property(,asc|desc).Default sort order is ascending. Multple sort criteria are supported.
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
+            $ref: Pageable
       responses:
         '200':
           description: 返回用户信息
           content:
             application/json:
               schema:
-                type: object
+                $ref: 'peopleDTO.yml#/peopleListDto'
     post:
       description: 新增用户信息
-      parameters:
-        - name: page
-          in: query
-          description: Page number of the requested page
-          required: false
-          schema:
-            type: long
-        - name: size
-          in: query
-          description: Size of a page
-          required: false
-          schema:
-            type: long
-        - name: sort
-          in: query
-          description: Sorting criteria in the format： property(,asc|desc).Default sort order is ascending. Multple sort criteria are supported.
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
+      summary: 新增用户信息
+      tags:
+        - people
+      operationId: addPeople
       requestBody:
         description: 新增用户传输对象
         required: true
         content:
           application/json:
             schema:
-              type: object
-              $ref: '#/components/schemas/ypeople'
+              $ref: 'people.yml#/peopleVM'
       responses:
         '200':
-          description: 返回新增结果
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ypeople'
-  /test:
+          description: 新增成功
+          content: {}
+  /file:
     post:
-      description: 文件传输测试
+      description: 传输文件
+      summary: 传输文件
+      tags:
+        - test
+      operationId: transformTest
       requestBody:
         description: 文件
         required: true
@@ -115,31 +86,29 @@ paths:
           multipart/form-data:
             schema:
               properties:
-                file:
+                fileeee:
                   type: string
                   format: binary
       responses:
         '200':
           description: 返回新增结果
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ypeople'
-components:
-  #可重用的架构对象
-  schemas:
-    ypeople:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        username:
-          type: string
-        passowrd:
-          type: string
-        email:
-          type: string
-        phone:
-          type: String
+          content: {}
+  /test:
+    get:
+      description: 测试
+      summary: ces
+      tags:
+        - test
+      operationId: test
+      parameters:
+        - name: people
+          in: query
+          description: page
+          required: false
+          schema:
+            $ref: 'people.yml#/people'
+      responses:
+        '200':
+          description: 返回用户信息
+          content: {}
+

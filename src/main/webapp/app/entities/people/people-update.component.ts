@@ -4,9 +4,11 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
 
 import { IPeople, People } from 'app/shared/model/people.model';
 import { PeopleService } from './people.service';
+import { AlertError } from 'app/shared/alert/alert-error.model';
 
 @Component({
   selector: 'jhi-people-update',
@@ -14,6 +16,7 @@ import { PeopleService } from './people.service';
 })
 export class PeopleUpdateComponent implements OnInit {
   isSaving = false;
+  dateDp: any;
 
   editForm = this.fb.group({
     id: [],
@@ -21,9 +24,18 @@ export class PeopleUpdateComponent implements OnInit {
     password: [],
     email: [],
     phone: [],
+    date: [],
+    sex: [],
+    hobby: [],
   });
 
-  constructor(protected peopleService: PeopleService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected dataUtils: JhiDataUtils,
+    protected eventManager: JhiEventManager,
+    protected peopleService: PeopleService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ people }) => {
@@ -38,6 +50,25 @@ export class PeopleUpdateComponent implements OnInit {
       password: people.password,
       email: people.email,
       phone: people.phone,
+      date: people.date,
+      sex: people.sex,
+      hobby: people.hobby,
+    });
+  }
+
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(contentType: string, base64String: string): void {
+    this.dataUtils.openFile(contentType, base64String);
+  }
+
+  setFileData(event: any, field: string, isImage: boolean): void {
+    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe(null, (err: JhiFileLoadError) => {
+      this.eventManager.broadcast(
+        new JhiEventWithContent<AlertError>('openApiDemoApp.error', { ...err, key: 'error.file.' + err.key })
+      );
     });
   }
 
@@ -63,6 +94,9 @@ export class PeopleUpdateComponent implements OnInit {
       password: this.editForm.get(['password'])!.value,
       email: this.editForm.get(['email'])!.value,
       phone: this.editForm.get(['phone'])!.value,
+      date: this.editForm.get(['date'])!.value,
+      sex: this.editForm.get(['sex'])!.value,
+      hobby: this.editForm.get(['hobby'])!.value,
     };
   }
 

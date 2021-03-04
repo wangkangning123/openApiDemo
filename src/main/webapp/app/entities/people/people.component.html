@@ -27,6 +27,9 @@
                     <th scope="col" ><span jhiTranslate="openApiDemoApp.people.password">Password</span></th>
                     <th scope="col" ><span jhiTranslate="openApiDemoApp.people.email">Email</span></th>
                     <th scope="col" ><span jhiTranslate="openApiDemoApp.people.phone">Phone</span></th>
+                    <th scope="col" ><span jhiTranslate="openApiDemoApp.people.date">Date</span></th>
+                    <th scope="col" ><span jhiTranslate="openApiDemoApp.people.sex">Sex</span></th>
+                    <th scope="col" ><span jhiTranslate="openApiDemoApp.people.hobby">Hobby</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -37,6 +40,9 @@
                     <td>{{ people.password }}</td>
                     <td>{{ people.email }}</td>
                     <td>{{ people.phone }}</td>
+                    <td>{{ people.date | date:'mediumDate' }}</td>
+                    <td>{{ people.sex }}</td>
+                    <td>{{ people.hobby }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

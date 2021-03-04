@@ -1,0 +1,15 @@
+peopleListDto:
+  type: object
+  description: 列表查询返回结果
+  properties:
+    pageNum:
+      description: 页数
+      type: integer
+    pageSize:
+      description: 每页显示数量
+      type: integer
+    peopleList:
+      description: 人员信息列表
+      type: array
+      items:
+        $ref: 'people.yml#/peopleVM'

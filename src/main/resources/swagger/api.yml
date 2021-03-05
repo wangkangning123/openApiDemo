@@ -34,81 +34,38 @@ servers:
         default: v2
 #-- /{path}   path项对象  到单个短线的相对路径，字段名称必须以/开头，路径会自动追加到url后面，用以构造完成的url
 paths:
-  /people:
+  /totalRanking:
     get:
-      description: 获取用户信息(分页)
-      summary: 获取用户信息(分页)
+      description: 工时/任务排行
+      summary: 工时/任务排行
       tags:
-        - people
-      operationId: getPeople
+        - ranking
+      operationId: totalRanking
       parameters:
-        - name: pageable
-          description: page
+        - name: flag
           in: query
-          required: false
+          description: 0：工时 1：任务数
           schema:
-            $ref: Pageable
+            type: integer
+        - name: startDate
+          in: query
+          description: 开始日期
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: 结束日期
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: 返回用户信息
           content:
             application/json:
               schema:
-                $ref: 'peopleDTO.yml#/peopleListDto'
-    post:
-      description: 新增用户信息
-      summary: 新增用户信息
-      tags:
-        - people
-      operationId: addPeople
-      requestBody:
-        description: 新增用户传输对象
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: 'people.yml#/peopleVM'
-      responses:
-        '200':
-          description: 新增成功
-          content: {}
-  /file:
-    post:
-      description: 传输文件
-      summary: 传输文件
-      tags:
-        - test
-      operationId: transformTest
-      requestBody:
-        description: 文件
-        required: true
-        content:
-          multipart/form-data:
-            schema:
-              properties:
-                fileeee:
-                  type: string
-                  format: binary
-      responses:
-        '200':
-          description: 返回新增结果
-          content: {}
-  /test:
-    get:
-      description: 测试
-      summary: ces
-      tags:
-        - test
-      operationId: test
-      parameters:
-        - name: people
-          in: query
-          description: page
-          required: false
-          schema:
-            $ref: 'people.yml#/people'
-      responses:
-        '200':
-          description: 返回用户信息
-          content: {}
+                type: array
+                items:
+                  $ref: 'wkn.yml#/rankMessageAllDTO'
 

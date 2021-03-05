@@ -1,0 +1,17 @@
+rankMessageAllDTO:
+  type: object
+  description: 返回排序结果
+  required:
+    - rank
+    - name
+    - amount
+  properties:
+    rank:
+      description: 排名
+      type: integer
+    name:
+      description: 姓名
+      type: string
+    amount:
+      description: 工时/任务数
+      type: long

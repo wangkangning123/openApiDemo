@@ -15,3 +15,38 @@ rankMessageAllDTO:
     amount:
       description: 工时/任务数
       type: long
+personalMessageDTO:
+  type: object
+  description: 用户个人信息
+  properties:
+    id:
+      description: 用户id
+      type: integer
+      format: int64
+    name:
+      description: 姓名
+      type: string
+    login:
+      description: 账号
+      type: string
+    password:
+      description: 密码
+      type: string
+    image:
+      description: 头像
+      type: string
+    gender:
+      description: 性别
+      type: string
+    department:
+      description: 部门
+      type: string
+    job:
+      description: 岗位
+      type: string
+    title:
+      description: 个性签名
+      type: string
+    role:
+      description: 权限
+      type: string

@@ -34,6 +34,7 @@ servers:
         default: v2
 #-- /{path}   path项对象  到单个短线的相对路径，字段名称必须以/开头，路径会自动追加到url后面，用以构造完成的url
 paths:
+#--   王康宁的接口  起始线-----------------------------------
   /totalRanking:
     get:
       description: 工时/任务排行
@@ -68,4 +69,5 @@ paths:
                 type: array
                 items:
                   $ref: 'wkn.yml#/rankMessageAllDTO'
+#--   王康宁的接口  终止线-----------------------------------
 
